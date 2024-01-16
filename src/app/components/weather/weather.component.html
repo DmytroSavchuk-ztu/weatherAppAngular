@@ -1,0 +1,59 @@
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+
+@if (!permissionGranted ){
+  Please, allow geolocation
+}
+
+@if (showWeather){
+  <div class="frame">
+    <p class="city">{{ weather.name }}</p>
+    <p class="country">{{ weather.sys.country }}</p>
+
+    <div class="moon">
+      <img [src]="iconPath + weather.weather[0].icon + '.png'"/>
+      <p>{{ weather.weather[0].main }}</p>
+    </div>
+    <div class="hill-bg-1"></div>
+    <div class="hill-bg-2"></div>
+    <div class="hill-fg-1"></div>
+    <div class="hill-fg-2"></div>
+    <div class="hill-fg-3"></div>
+
+    <div class="front">
+      <div>
+        <div class="temperature">
+          {{Math.floor(weather.main.temp)   }}°
+        </div>
+        <div class="icons">
+          <i class="fas fa-wind"></i><br/><i class="fas fa-tint"></i>
+        </div>
+        <div>
+          <div class="info">
+            {{Math.floor(weather.wind.speed)  }}km/h <br>  {{ weather.main.humidity }}%
+          </div>
+          <table class="preview">
+            <tbody>
+            <tr>
+              <td>Feels Like</td>
+              <td>{{ Math.floor(weather.main.feels_like)}}°</td>
+            </tr>
+            <tr>
+              <td>Min | Max</td>
+              <td>{{Math.floor(weather.main.temp_min)   }}°| {{Math.floor(weather.main.temp_max)  }}°</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else if (!showWeather && permissionGranted) {
+  <div>
+    <h1>Loading</h1>
+  </div>
+}
+
+
