@@ -67,4 +67,4 @@ jobs:
         with:
           app-name: 'lab1-ipzk241-savchuk'
           slot-name: 'Production'
-          package: deploy/music-app-angular
+          package: deploy/dist/music-app-angular
